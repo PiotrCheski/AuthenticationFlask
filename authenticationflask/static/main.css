@@ -1,0 +1,19 @@
+/* styles.css */
+body {
+    background-color: #1D2D44;
+    color: #ffffff; /* Optional: This will make the text white for better visibility */
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
