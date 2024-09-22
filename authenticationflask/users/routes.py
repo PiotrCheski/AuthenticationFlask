@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, url_for, flash, redirect
 from authenticationflask import db, bcrypt
 from authenticationflask.users.forms import RegistrationForm, LoginForm
 from authenticationflask.models import User
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 users = Blueprint('users', __name__)
 
@@ -25,7 +25,12 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            return redirect(url_for('main.home'))
+            return redirect(url_for('logs.logshome'))
         else:
             flash('Login unsuccessful. Please check email and password', 'danger')
     return render_template("users/login.html", title="Login", form=form)
+
+@users.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('main.home'))

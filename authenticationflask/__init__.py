@@ -24,8 +24,11 @@ def create_app(config_class=Config):
 
     from authenticationflask.main.routes import main
     from authenticationflask.users.routes import users
+    from authenticationflask.logs.routes import logs
 
     app.register_blueprint(main)
     app.register_blueprint(users)
+    app.register_blueprint(logs)
+
     
     return app
